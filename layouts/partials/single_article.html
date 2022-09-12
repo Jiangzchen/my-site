@@ -1,0 +1,33 @@
+<!--
+ * @Author: Jiangzchen 927764151@qq.com
+ * @Date: 2022-09-04 22:15:42
+ * @LastEditors: Jiangzchen 927764151@qq.com
+ * @LastEditTime: 2022-09-06 15:07:03
+ * @FilePath: \my-site\layouts\partials\single_article.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+            <img src="{{ .Params.banner | absURL }}" class="article-banner">
+        {{ end }}
+
+        {{ partial "article_header" . }}
+        <div class="article-entry" itemprop="articleBody">
+            {{ .Content }}
+        </div>
+        {{ partial "article_footer" . }}
+    </div>
+
+    {{ partial "prev_next_post" . }}
+</article>
+
+{{ if and (not (eq .Site.DisqusShortname "")) (not .Params.disable_comments) }}
+<section id="comments">
+    <div id="disqus_thread">
+        {{ template "_internal/disqus.html" . }}
+    </div>
+</section>
+{{ end }}
+
+<div id="waline"></div>

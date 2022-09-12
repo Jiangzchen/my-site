@@ -1,0 +1,47 @@
+<!--
+ * @Author: Jiangzchen 927764151@qq.com
+ * @Date: 2022-09-04 22:15:42
+ * @LastEditors: Jiangzchen 927764151@qq.com
+ * @LastEditTime: 2022-09-06 15:07:55
+ * @FilePath: \my-site\layouts\partials\footer_js.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+{{ template "_internal/google_analytics.html" . }}
+<script src="{{ "fancybox/jquery.fancybox.pack.js" | absURL }}"></script>
+<script src="{{ "js/script.js" | absURL }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<!-- require APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- waline -->
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css"></link>
+
+
+{{ range .Site.Params.custom_js }}
+<script src="{{ . | absURL }}"></script>
+{{ end }}
+<script>hljs.initHighlightingOnLoad();</script>
+
+{{ if not .Site.Params.disable_mathjax }}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script>
+    Waline.init({
+      el: '#waline',
+      serverURL: 'https://your-domain.vercel.app',
+    });
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+{{ end }}

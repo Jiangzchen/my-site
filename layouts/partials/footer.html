@@ -1,0 +1,41 @@
+<!--
+ * @Author: Jiangzchen 927764151@qq.com
+ * @Date: 2022-09-04 22:15:42
+ * @LastEditors: Jiangzchen 927764151@qq.com
+ * @LastEditTime: 2022-09-06 19:27:14
+ * @FilePath: \my-site\layouts\partials\footer.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; {{ now.Format "2006"}}
+      {{ with .Site.Params.copyright }}{{ . | markdownify}}{{ end }}
+    </div>
+    <i class="powerby">
+        <span id="busuanzi_container_site_pv">
+            访问量&nbsp;-&nbsp;<span id="busuanzi_value_site_pv"></span>
+        </span>&nbsp;
+        <span id="busuanzi_container_site_uv">
+            访客数&nbsp;-&nbsp;<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </i>
+  </div>
+  
+  <meting-js 
+    server="netease" 
+    type="playlist" 
+    id="60198"
+    fixed="true" 
+    autoplay="false"
+    loop="all"
+    order="random"
+    preload="auto"
+    list-folded="ture"
+    list-max-height="500px"
+    lrc-type="1"
+  ></meting-js>
+</footer>
+
+{{ partial "footer_js" . }}
+{{ partial "footer_custom_js" . }}
